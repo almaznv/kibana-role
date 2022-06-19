@@ -1,0 +1,9 @@
+---
+- name: Converge kibana
+  hosts: kibana
+  tasks:
+    - name: "Include kibana-role"
+      include_role:
+        name: "kibana-role"
+    - shell: nohup /usr/share/kibana/bin/kibana --allow-root > /var/log/kibana/kibana.log &
+

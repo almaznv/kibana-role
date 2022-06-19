@@ -1,0 +1,26 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: centos7
+    image: docker.io/pycontribs/centos:7
+    pre_build_image: true
+    groups:
+      - kibana
+  - name: ubuntu
+    image: docker.io/pycontribs/ubuntu:latest
+    pre_build_image: true
+    groups:
+      - kibana
+provisioner:
+  name: ansible
+  inventory:
+    hosts:
+      all:
+        hosts:
+          el-instance:
+            ansible_host: 130.193.53.100
+verifier:
+  name: ansible
